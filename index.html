@@ -1,79 +1,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jack AI - Dental Assistant</title>
+<title>Jack AI - Professional Dental Assistant</title>
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
 <style>
-body{font-family:Arial;margin:0;background:#f0f4f8}
-header{background:#0066cc;color:white;padding:20px;text-align:center}
-.chat-box{max-width:700px;margin:20px auto;background:white;border-radius:10px;padding:15px;box-shadow:0 2px 10px rgba(0,0,0,0.1)}
-#messages{height:350px;overflow-y:auto;border:1px solid #ddd;padding:10px;border-radius:5px;background:#fafafa}
-.msg{margin:8px 0;padding:8px 12px;border-radius:15px;max-width:80%;line-height:1.4}
-.user{background:#0066cc;color:white;margin-left:auto}
-.bot{background:#e9e9e9}
-input{width:70%;padding:12px;border-radius:20px;border:1px solid #ccc}
-button{padding:12px 20px;border:none;background:#0066cc;color:white;border-radius:20px;cursor:pointer}
-.notes{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
-.note-card{background:#fff;padding:10px;border-left:4px solid #0066cc;cursor:pointer;font-weight:bold}
-.ad{background:#fff3cd;text-align:center;padding:15px;margin:10px;border:1px dashed #ffc107}
+*{font-family:'Poppins',sans-serif}
+body{margin:0;background:linear-gradient(135deg,#667eea 0%,#764ba2 100%);min-height:100vh}
+header{background:rgba(255,255,255,0.1);backdrop-filter:blur(10px);color:white;padding:30px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.2)}
+header h1{font-size:40px;margin:0;text-shadow:0 2px 10px rgba(0,0,0,0.3)}
+.card{max-width:750px;margin:20px auto;background:white;border-radius:20px;padding:20px;box-shadow:0 15px 35px rgba(0,0,0,0.2)}
+#messages{height:400px;overflow-y:auto;padding:15px;background:#f8f9ff;border-radius:15px}
+.msg{margin:10px 0;padding:12px 18px;border-radius:20px;max-width:80%;animation:fadeIn 0.3s}
+.user{background:linear-gradient(135deg,#667eea,#764ba2);color:white;margin-left:auto;border-bottom-right-radius:5px}
+.bot{background:white;border:1px solid #e0e0e0;box-shadow:0 2px 5px rgba(0,0,0,0.05);border-bottom-left-radius:5px}
+.input-area{display:flex;gap:10px;margin-top:15px;background:#f0f2f5;padding:10px;border-radius:30px}
+.input-area input{flex:1;border:none;background:transparent;padding:10px;outline:none}
+.input-area button{background:linear-gradient(135deg,#667eea,#764ba2);color:white;border:none;padding:12px 25px;border-radius:25px;cursor:pointer;font-weight:600}
+.quick{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:20px}
+.q-btn{background:white;border:2px solid #667eea;color:#667eea;padding:12px;border-radius:12px;cursor:pointer;font-weight:600;transition:0.3s}
+.q-btn:hover{background:#667eea;color:white;transform:translateY(-2px)}
+.ad{background:linear-gradient(135deg,#ffeaa7,#fab1a0);padding:15px;text-align:center;border-radius:15px;margin:15px;font-weight:600}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
 </style>
 </head>
 <body>
 <header>
 <h1>🦷 JACK AI</h1>
-<p>Ask any dental question - I will answer instantly</p>
+<p>Professional Dental Intelligence • For Students & Doctors</p>
 </header>
 
-<div class="ad">AD SPACE - Your Google Ads will appear here</div>
-
-<div class="chat-box">
+<div class="card">
+<div class="ad">✨ AD SPACE - Your Earnings Will Appear Here ✨</div>
 <div id="messages">
-<div class="msg bot">Hello! I am Jack AI. Ask me any dental question - from Diploma to PhD level. 🦷</div>
-</div>
-<div style="display:flex;gap:5px;margin-top:10px">
-<input id="q" placeholder="Type your question... e.g. treatment of caries?">
-<button onclick="ask()">Send</button>
+<div class="msg bot">👋 Hello Doctor! I'm <b>Jack AI</b>, your advanced dental assistant.<br><br>I can explain any dental topic from Diploma to PhD level with modern graphics.<br><br>Ask me anything! 🦷</div>
 </div>
 
-<div class="notes">
-<div class="note-card" onclick="quick('Tooth Extraction')">📄 Tooth Extraction</div>
-<div class="note-card" onclick="quick('Dental Caries')">📄 Dental Caries</div>
-<div class="note-card" onclick="quick('Periodontitis')">📄 Periodontitis</div>
-<div class="note-card" onclick="quick('Dental X-ray')">📄 Dental X-ray</div>
-<div class="note-card" onclick="quick('Dental Implant')">📄 Dental Implant</div>
-<div class="note-card" onclick="quick('Tooth Pain')">📄 Tooth Pain</div>
+<div class="input-area">
+<input id="q" placeholder="Ask any dental question...">
+<button onclick="ask()">Send 🚀</button>
+</div>
+
+<div class="quick">
+<button class="q-btn" onclick="quick('Tooth Extraction')">🦷 Extraction</button>
+<button class="q-btn" onclick="quick('Dental Caries')">🔬 Caries</button>
+<button class="q-btn" onclick="quick('Dental Implant')">⚙️ Implant</button>
+<button class="q-btn" onclick="quick('Dental X-ray')">📸 X-Ray</button>
 </div>
 </div>
 
 <script>
-const knowledge = {
-"caries":"Dental Caries is tooth decay caused by bacteria. Treatment: Fluoride for early stage, Composite Filling, RCT if pulp involved, Crown if severe.",
-"extraction":"Tooth Extraction: 1. Give Local Anesthesia 2. Luxate with elevator 3. Remove with forceps 4. Control bleeding with gauze 5. Post-op: No rinsing for 24h.",
-"periodontitis":"Periodontitis is gum disease. Signs: Bleeding, bad breath, loose teeth. Treatment: Scaling & Root Planing, Antibiotics, Surgery if advanced.",
-"x-ray":"Dental X-rays: Periapical (full tooth), Bitewing (caries), OPG (all teeth). Use to detect caries, abscess, impacted wisdom tooth.",
-"implant":"Dental Implant: Titanium root replacement. Steps: 1. Implant placement 2. Osseointegration (3-6 months) 3. Abutment + Crown. Success rate 95%.",
-"pain":"Tooth Pain: First aid: Ibuprofen 400mg, Clove oil on cotton, Warm salt water. See dentist ASAP - could be pulpitis or abscess."
+const knowledge={
+"caries":"🦷 <b>Dental Caries:</b><br>• Cause: Streptococcus mutans<br>• Stages: White spot > Enamel decay > Dentin > Pulp<br>• Treatment: Fluoride, GIC/Composite Filling, RCT, Crown<br>• Prevention: Brush 2x, Floss, Less sugar",
+"extraction":"🦷 <b>Tooth Extraction Protocol:</b><br>1. Anesthesia (Lidocaine 2%)<br>2. Elevator to luxate<br>3. Forceps extraction<br>4. Socket compression<br>5. Gauze pack + Post-op instructions",
+"implant":"⚙️ <b>Dental Implant:</b><br>• Material: Titanium<br>• Steps: CBCT > Placement > 3-6 months healing > Crown<br>• Success: 95%<br>• Contra: Uncontrolled diabetes, smoking",
+"x-ray":"📸 <b>Dental X-Rays:</b><br>• Bitewing: Interproximal caries<br>• Periapical: Root & abscess<br>• OPG: Full mouth<br>• CBCT: 3D for implants",
+"pain":"🚨 <b>Tooth Pain Emergency:</b><br>• Ibuprofen 400mg TID<br>• Clove oil (eugenol)<br>• Warm salt water<br>• Visit dentist within 24h - may need RCT"
 };
-
 function ask(){
-let input=document.getElementById('q');
-let text=input.value.toLowerCase();
-if(!text) return;
-addMsg(input.value,'user');
-let ans="Sorry, I am still learning that topic. Try asking about: Caries, Extraction, Periodontitis, X-ray, Implant, Pain.";
-for(let k in knowledge){ if(text.includes(k)){ ans=knowledge[k]; break; } }
-setTimeout(()=>addMsg(ans,'bot'),500);
-input.value='';
+let i=document.getElementById('q'); let t=i.value.toLowerCase(); if(!t) return;
+addMsg(i.value,'user'); let a="🤖 I'm still learning that. Try: Caries, Extraction, Implant, X-ray, Pain. Or ask me in detail!";
+for(let k in knowledge){ if(t.includes(k)){ a=knowledge[k]; break; } }
+setTimeout(()=>addMsg(a,'bot'),600); i.value='';
 }
 function quick(t){ document.getElementById('q').value=t; ask(); }
 function addMsg(t,c){
-let d=document.createElement('div');
-d.className='msg '+c;
-d.innerText=t;
+let d=document.createElement('div'); d.className='msg '+c; d.innerHTML=t;
 document.getElementById('messages').appendChild(d);
 document.getElementById('messages').scrollTop=9999;
 }
-document.getElementById('q').addEventListener('keypress',function(e){ if(e.key==='Enter') ask(); });
+document.getElementById('q').addEventListener('keypress',e=>{ if(e.key==='Enter') ask(); });
 </script>
 </body>
 </html>
