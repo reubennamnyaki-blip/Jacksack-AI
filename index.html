@@ -1,68 +1,38 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>Jacksack-AI - Dental Notes & AI</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jacksack AI - AI Image Generator</title>
 <style>
-body{font-family:Arial;background:#0f172a;color:white;margin:0;padding-bottom:85px}
-.header{background:#2563eb;padding:16px;text-align:center;font-size:21px;font-weight:bold}
-.ads{background:#1e293b;text-align:center;padding:12px;margin:12px;border:1px dashed #64748b;color:#94a3b8;border-radius:8px;font-size:13px}
-.notes{background:white;color:#0f172a;margin:15px;border-radius:12px;padding:16px}
-.note-item{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding:12px 0}
-.btn-pay{background:#16a34a;color:white;border:none;padding:9px 16px;border-radius:20px;font-weight:bold;cursor:pointer}
-.chat-box{height:38vh;overflow-y:auto;padding:15px;margin:12px;background:#1e293b;border-radius:12px}
-.message{background:#334155;padding:10px;margin:8px 0;border-radius:10px;font-size:14px}
-.user{background:#2563eb;text-align:right}
-.input-area{display:flex;padding:10px;background:#1e293b;position:fixed;bottom:0;width:100%;box-sizing:border-box}
-input{flex:1;padding:12px;border-radius:20px;border:none}
-button.send{background:#2563eb;color:white;border:none;padding:12px 20px;border-radius:20px;margin-left:10px}
+body{font-family:Arial;text-align:center;padding:20px;background:#f5f5f5}
+.box{background:white;padding:20px;border-radius:15px;max-width:400px;margin:auto;box-shadow:0 0 10px #ccc}
+button{padding:12px 20px;margin:5px;border:none;border-radius:8px;cursor:pointer;font-weight:bold}
+.generate{background:#000;color:#fff;width:100%}
+.pay-tz{background:#ffcb05;width:100%}
+.pay-int{background:#25D366;color:white;width:100%}
+input{width:90%;padding:12px;margin:10px 0;border-radius:8px;border:1px solid #ccc}
+#result img{width:100%;margin-top:15px;border-radius:10px}
 </style>
 </head>
 <body>
-<div class="header">Jacksack-AI 🦷 | Dental AI Assistant</div>
+<div class="box">
+<h2>Jacksack AI 🎨</h2>
+<p>Generate AI Image - TZS 2000 / $2</p>
+<input id="prompt" placeholder="Describe your image... e.g. a lion in Dodoma">
+<button class="generate" onclick="generate()">Generate Image</button>
 
-<div class="ads">Advertisement Space - Your Google AdSense Ad Will Appear Here (Ad 1)</div>
-
-<div class="notes">
-<h3>📚 Premium Clinical Dentistry Notes</h3>
-<div class="note-item">
-<span><b>Oral Pathology Notes</b><br><small>PDF - 45 Pages - High Yield</small></span>
-<button class="btn-pay" onclick="pay('Oral Pathology')">Pay TZS 2000</button>
-</div>
-<div class="note-item">
-<span><b>Operative Dentistry MCQs</b><br><small>200+ Questions with Answers</small></span>
-<button class="btn-pay" onclick="pay('Operative MCQs')">Pay TZS 2000</button>
-</div>
-<div class="note-item">
-<span><b>MUHAS Past Papers 2020-2024</b><br><small>All Subjects</small></span>
-<button class="btn-pay" onclick="pay('Past Papers')">Pay TZS 3000</button>
-</div>
-<p style="font-size:11px;color:green;text-align:center;margin-top:10px">Instant download after payment via WhatsApp!</p>
+<div style="margin-top:20px;border-top:1px solid #eee;padding-top:15px">
+<p><b>How to Pay:</b></p>
+<button class="pay-tz" onclick="payTZ()">Tanzania: Tigo Pesa 0677847700</button>
+<button class="pay-int" onclick="payINT()">International: Pay $2 via WhatsApp</button>
+<p style="font-size:12px">After payment, send screenshot to WhatsApp 0688676829</p>
 </div>
 
-<div class="ads">Advertisement Space - AdSense Ad 2</div>
-
-<div class="chat-box" id="chat">
-<div class="message">Hello! I am Jacksack-AI. Ask me any Clinical Dentistry question!</div>
-</div>
-
-<div class="input-area">
-<input id="userInput" placeholder="Type your question...">
-<button class="send" onclick="send()">Send</button>
+<div id="result"></div>
 </div>
 
 <script>
-function send(){
-let i=document.getElementById('userInput');
-let c=document.getElementById('chat');
-if(i.value=='')return;
-c.innerHTML+='<div class="message user">'+i.value+'</div>';
-setTimeout(()=>{c.innerHTML+='<div class="message">AI: Thanks for your question about: '+i.value+'<br><br>Full AI answers coming soon!</div>';c.scrollTop=c.scrollHeight},600);
-i.value='';c.scrollTop=c.scrollHeight;
-}
-function pay(item){
-alert("You selected: "+item+"\n\nHOW TO PAY:\n1. Send TZS 2000 to Tigo Pesa: 06XXXXXXXX\n2. Send payment screenshot to WhatsApp: 06XXXXXXXX\n3. You will receive PDF instantly!\n\n(Replace 06XXXXXXXX with your real number in the code)");
-}
-</script>
-</body>
-</html>
+function payTZ(){
+alert('1. Send TZS 2000 to Tigo Pesa: 0677847700\n2. Send screenshot to WhatsApp: 0688676829\n3. We will activate your account');
+window.open('https://wa.me/255688676829?text=
