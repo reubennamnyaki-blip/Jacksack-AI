@@ -12,13 +12,18 @@ button{padding:12px 20px;margin:5px;border:none;border-radius:8px;cursor:pointer
 .pay-tz{background:#ffcb05;width:100%}
 .pay-int{background:#25D366;color:white;width:100%}
 input{width:90%;padding:12px;margin:10px 0;border-radius:8px;border:1px solid #ccc}
+.ads{margin:15px 0;padding:10px;background:#fafafa;border:1px dashed #ccc;border-radius:8px;font-size:12px;color:#888}
 #result img{width:100%;margin-top:15px;border-radius:10px}
 </style>
+<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-XXXXXXXXXXXXXXXX" crossorigin="anonymous"></script>
 </head>
 <body>
 <div class="box">
-<h2>Jacksack AI 🎨</h2>
-<p>Generate AI Image - TZS 2000 / $2</p>
+<h2>Jacksack AI</h2>
+<p>AI Image Generator - TZS 2000 / $2</p>
+
+<div class="ads">Advertisement</div>
+
 <input id="prompt" placeholder="Describe your image... e.g. a lion in Dodoma">
 <button class="generate" onclick="generate()">Generate Image</button>
 
@@ -29,10 +34,24 @@ input{width:90%;padding:12px;margin:10px 0;border-radius:8px;border:1px solid #c
 <p style="font-size:12px">After payment, send screenshot to WhatsApp 0688676829</p>
 </div>
 
+<div class="ads">Advertisement</div>
+
 <div id="result"></div>
 </div>
 
 <script>
 function payTZ(){
 alert('1. Send TZS 2000 to Tigo Pesa: 0677847700\n2. Send screenshot to WhatsApp: 0688676829\n3. We will activate your account');
-window.open('https://wa.me/255688676829?text=
+window.open('https://wa.me/255688676829?text=Hello%20Jacksack%20I%20sent%20TZS%202000%20to%200677847700%20for%20image','_blank');
+}
+function payINT(){
+window.open('https://wa.me/255688676829?text=Hello%20Jacksack%20I%20want%20to%20pay%20$2%20for%20AI%20image','_blank');
+}
+function generate(){
+let p=document.getElementById('prompt').value;
+if(!p){alert('Please write image description first');return;}
+document.getElementById('result').innerHTML='<p>Please pay first to generate...</p>';
+}
+</script>
+</body>
+</html>
